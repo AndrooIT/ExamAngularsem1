@@ -34,11 +34,16 @@ ngOnInit(){
     this.CSSclass = 'springGreen';
   } 
 }
-snake :NgxSnakeModule = new NgxSnakeModule();
+// @ViewChild(NgxSnakeComponent);
+//snake :NgxSnakeModule = new NgxSnakeModule();
+
 onStartClick(){
-  console.log(JSON.stringify(this.snake));
-  // .actionStart();
+  //Moje nieudane próby 
+  //console.log(JSON.stringify(this.snake));
+  //snake.actionStart();
+  // game.actionStart();
   this.status="Started";
+  // pozostały kod wyzwalany przyciskiem "Start"
 }
 
 onStopClick(){}
