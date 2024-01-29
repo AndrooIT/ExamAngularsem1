@@ -1,0 +1,57 @@
+<div [class]="CSSclass">
+    <div class="header">
+        <div>
+            <button (click)="sendLoginPageVisibleToParent()">Exit Game - Zabierz mnie do formularza</button>
+        </div>
+        <div>status gry: <br /> {{status}}</div>
+    </div>
+    <div class="header">
+        <div>
+            <p>Witam Cię <span style="font-size: xx-large;">{{ name }}</span></p>
+        </div>
+        <div>Uzbierane punkty:<br /><span style="font-size: xx-large; display: block; text-align: center;">
+                {{points}}</span></div>
+        <div>Czas rozgrywki: <br />{{timeOfGame}}</div>
+    </div>
+    <div class="header">
+        <div>
+            <div>Panel sterowania grą</div>
+            <div style="text-align: center;">
+                <button (click)="onStartClick()">StartTest</button>
+                <button (click)="game.actionStart()">Start</button>
+                <button (click)="game.actionStop()">Stop</button>
+                <button (click)="game.actionReset()">Restart</button>
+            </div>
+            <div>Wciśnij "Start", aby rozpocząć</div>
+
+        </div>
+        <div style="display: inline-block;">
+            <div style="display: inline-block;">Panel sterowania wężem</div>
+            <div style="display: inline-block;">
+                <div style="display: inline-block;">
+                    <div style="text-align: center;"><button (click)="game.actionUp()">Góra</button></div><br />
+                    <div style="text-align: center;"><button (click)="game.actionLeft()">Lewo</button>
+                        <button (click)="game.actionDown()">Dół</button>
+                        <button (click)="game.actionRight()">Prawo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header1">
+        <div style="min-width: 299px;"><br />Plansza gry <br />
+            <ngx-snake #game></ngx-snake>
+        </div>
+        <div><br />Historia gry posortowana wg. kryterium<br />
+            <select name="sortingCriteria" placeholder="kryterium sortowania">
+                <option value="wszystkie wpisy">wszystkie wpisy</option>
+                <option value="typ wpisu a-z">typ wpisu a-z</option>
+                <option value="typ wpisu z-a">typ wpisu z-a</option>
+                <option value="data wpisu od najstarszego">data wpisu od najstarszego</option>
+                <option value="data wpisu od najmłodszego">data wpisu od najmłodszego</option>
+            </select>:<br />
+
+        </div>
+    </div>
+
+</div>

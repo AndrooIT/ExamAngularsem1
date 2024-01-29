@@ -1,0 +1,27 @@
+<div [class]="CSSclass">
+    <div class="intro">
+        <blockquote>
+            "Gry są jak magiczne bramy do innych wymiarów, gdzie możemy być kimś
+            zupełnie innym przez chwilę."
+        </blockquote>
+        <p>
+            <cite><i>- Neil Gaiman</i></cite>
+        </p>
+    </div>
+    <div class="playersData">
+        <label for="selectStyle">wybierz swój styl</label><br />
+        <select (change)="changeStyle()" name="selectStyle" placeholder="wybierz swój styl" [(ngModel)]="style">
+            <option value="surowy styl html">surowy styl html</option>
+            <option value="wiosenny zielony">wiosenny zielony</option>
+            <option value="skala szarości">skala szarości</option>
+        </select><br /><br />
+        <label for="imię">imię</label><br />
+        <input (keyup)="validateName()" [(ngModel)]="name" name="imię" type="text" placeholder="imię" /><br />
+        <div class="userFormNameAdvice">{{userFormNameAdvice}}</div><br />
+        <label for="e-mail">e-mail</label><br />
+        <input (keyup)="validateEmail()" [(ngModel)]="eMail" name="e-mail" type="e-mail"
+            placeholder="e-mail" /><br /><br />
+    </div><br />
+    <div class="userFormEmailAdvice">{{userFormEmailAdvice}}</div> <br />
+    <button [disabled]="formIsInvalid" (click)="handleClick()">Zagraj</button>
+</div>

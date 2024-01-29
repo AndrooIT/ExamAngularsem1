@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.header1 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.frame {
+  width: 65%;
+  min-height: 50%;
+  margin: auto;
+  margin-top: 45px;
+  border: 5px dotted black;
+
+  padding: 5%;
+  align-items: center;
+  justify-content: center;
+}
+.springGreen {
+  width: 65%;
+  min-height: 50%;
+  margin: auto;
+  margin-top: 5px;
+  border: 5px double rgb(9, 70, 9);
+  color: greenyellow;
+  background-color: rgb(126, 126, 38);
+
+  padding: 1%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  letter-spacing: 0.2rem;
+  line-height: 1.1 rem;
+}
