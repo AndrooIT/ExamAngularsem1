@@ -3,7 +3,7 @@
         <div>
             <button (click)="sendLoginPageVisibleToParent()">Exit Game - Zabierz mnie do formularza</button>
         </div>
-        <div>status gry: <br /> {{status}}</div>
+        <div>status gry: <span style="font-size: 1.8rem">{{status}}</span></div>
     </div>
     <div class="header">
         <div>
@@ -11,16 +11,15 @@
         </div>
         <div>Uzbierane punkty:<br /><span style="font-size: xx-large; display: block; text-align: center;">
                 {{points}}</span></div>
-        <div>Czas rozgrywki: <br />{{timeOfGame}}</div>
+        <div>Czas rozgrywki: <br />{{timeOfGame}} sekund</div>
     </div>
     <div class="header">
         <div>
             <div>Panel sterowania grą</div>
             <div style="text-align: center;">
-                <button (click)="onStartClick()">StartTest</button>
-                <button (click)="game.actionStart()">Start</button>
-                <button (click)="game.actionStop()">Stop</button>
-                <button (click)="game.actionReset()">Restart</button>
+                <button (click)="onStartClick()">Start</button>
+                <button (click)="onStopClick()">Stop</button>
+                <button (click)="onRestartClick()">Restart</button>
             </div>
             <div>Wciśnij "Start", aby rozpocząć</div>
 
@@ -40,18 +39,30 @@
     </div>
     <div class="header1">
         <div style="min-width: 299px;"><br />Plansza gry <br />
-            <ngx-snake #game></ngx-snake>
+            <ngx-snake #game (foodEaten)="onFoodEaten()" (gameOver)="onGameOver()"></ngx-snake>
         </div>
         <div><br />Historia gry posortowana wg. kryterium<br />
-            <select name="sortingCriteria" placeholder="kryterium sortowania">
-                <option value="wszystkie wpisy">wszystkie wpisy</option>
-                <option value="typ wpisu a-z">typ wpisu a-z</option>
-                <option value="typ wpisu z-a">typ wpisu z-a</option>
-                <option value="data wpisu od najstarszego">data wpisu od najstarszego</option>
-                <option value="data wpisu od najmłodszego">data wpisu od najmłodszego</option>
+            <select [(ngModel)]="sortDirection" name="sortingCriteria" placeholder="kryterium sortowania">
+                <option value="asc">data wpisu od najstarszego</option>
+                <option value="desc">data wpisu od najmłodszego</option>
             </select>:<br />
-
+            i filtrowane wg. kryterium <br />
+            <select [(ngModel)]="events" name="filteringCriteria" placeholder="kryterium filtrowania">
+                <option value="">wszystkie wpisy</option>
+                <option value="Start">tylko Starty</option>
+                <option value="Stop">tylko Stopy</option>
+                <option value="Restart">tylko Restarty</option>
+                <option value="Początek Gry">tylko Początek Gry</option>
+            </select>:<br />
+            <div>
+                <ol>
+                    @for (item of list | filterEntrances: events | sortingMachine : sortDirection; track item) {
+                    <li> {{ item.date | date: 'mediumTime' }} - {{item.ev}} - {{item.points}}</li>
+                    } @empty {
+                    <li> There are no items. </li>
+                    }
+                </ol>
+            </div>
         </div>
     </div>
-
 </div>

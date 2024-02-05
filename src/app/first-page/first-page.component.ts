@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+// import { HotkeysModule } from '@ngneat/hotkeys';
 
 @Component({
   selector: 'app-first-page',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, 
+    // HotkeysModule
+  ],
   templateUrl: './first-page.component.html',
   styleUrl: './first-page.component.css',
 })
@@ -16,6 +19,7 @@ export class FirstPageComponent {
   CSSclass = 'frame';
   @Output() playerName = new EventEmitter<string>();
   @Output() exportStyle = new EventEmitter<string>();
+
 
   userFormNameAdvice = '';
   userFormEmailAdvice = '';
@@ -66,7 +70,8 @@ export class FirstPageComponent {
   ngOnInit(){
     this.changeStyle();
     this.validateName();
-    // this.handleClick();  
+    
+   
   }
   changeStyle() {
     if (this.style == 'skala szarości') {

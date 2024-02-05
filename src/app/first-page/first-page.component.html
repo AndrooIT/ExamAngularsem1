@@ -23,5 +23,6 @@
             placeholder="e-mail" /><br /><br />
     </div><br />
     <div class="userFormEmailAdvice">{{userFormEmailAdvice}}</div> <br />
-    <button [disabled]="formIsInvalid" (click)="handleClick()">Zagraj</button>
+    <button [disabled]="formIsInvalid" (click)="handleClick()" hotkeys="meta.enter"
+        (hotkey)="handleClick()">Zagraj</button>
 </div>
