@@ -1,0 +1,18 @@
+<div>
+    <h2>High Scores</h2>
+    <select [(ngModel)]="sortOrder" (change)="onSortOrderChange()">
+        <option value="asc">wynik rosnąco</option>
+        <option value="desc">wynik malejąco</option>
+    </select>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="showOnlyAndroo" (change)="onShowOnlyAndrooChange()">
+        Pokaż tylko wynik Androo
+    </label>
+
+    <ol>
+        <li *ngFor="let score of filteredScores">
+            {{ score.name }} - {{ score.score }}
+        </li>
+    </ol>
+</div>

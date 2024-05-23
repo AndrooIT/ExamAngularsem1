@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ListItem } from './second-page/second-page.component';
+import { ListItem } from './game-controler.service';
 @Pipe({
   name: 'sortingMachine',
   standalone: true

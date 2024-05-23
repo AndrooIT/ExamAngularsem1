@@ -1,0 +1,26 @@
+<div class="header1">
+
+    <div><br />Historia gry posortowana wg. kryterium<br />
+        <select [(ngModel)]="sortDirection" name="sortingCriteria" placeholder="kryterium sortowania">
+            <option value="asc">data wpisu od najstarszego</option>
+            <option value="desc">data wpisu od najmłodszego</option>
+        </select>:<br />
+        i filtrowane wg. kryterium <br />
+        <select [(ngModel)]="events" name="filteringCriteria" placeholder="kryterium filtrowania">
+            <option value="">wszystkie wpisy</option>
+            <option value="Start">tylko Starty</option>
+            <option value="Stop">tylko Stopy</option>
+            <option value="Restart">tylko Restarty</option>
+            <option value="Początek Gry">tylko Początek Gry</option>
+        </select>:<br />
+        <div>
+            <ol>
+                @for (item of list | filterEntrances: events | sortingMachine : sortDirection; track item) {
+                <li> {{ item.date | date: 'mediumTime' }} - {{item.ev}} - {{item.points}}</li>
+                } @empty {
+                <li> There are no items. </li>
+                }
+            </ol>
+        </div>
+    </div>
+</div>

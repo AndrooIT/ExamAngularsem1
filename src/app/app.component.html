@@ -1,12 +1,8 @@
 <div class="main">
   <div class="content">
     <div [class]="CSSclass">
-      @if (loginPageVisible)
-      {<app-first-page [name]="name" [style]="style" (playerName)="getNameAndPlay($event)"
-        (exportStyle)="getStyle($event)"></app-first-page>}
-      @else
-      {<app-second-page [name]="name" [style]="style" [loginPageVisible]="loginPageVisible"
-        (messageToParent)="goBackToForm()"></app-second-page>}
+      <router-outlet></router-outlet>
+
     </div>
   </div>
 </div>

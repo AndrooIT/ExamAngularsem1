@@ -18,11 +18,20 @@
         <label for="imię">imię</label><br />
         <input (keyup)="validateName()" [(ngModel)]="name" name="imię" type="text" placeholder="imię" /><br />
         <div class="userFormNameAdvice">{{userFormNameAdvice}}</div><br />
-        <label for="e-mail">e-mail</label><br />
+        <!-- <label for="e-mail">e-mail</label><br />
         <input (keyup)="validateEmail()" [(ngModel)]="eMail" name="e-mail" type="e-mail"
             placeholder="e-mail" /><br /><br />
     </div><br />
-    <div class="userFormEmailAdvice">{{userFormEmailAdvice}}</div> <br />
-    <button [disabled]="formIsInvalid" (click)="handleClick()" hotkeys="meta.enter"
-        (hotkey)="handleClick()">Zagraj</button>
-</div>
+    <div class="userFormEmailAdvice">{{userFormEmailAdvice}}</div> <br /> -->
+        <label for="studentId">Identyfikator w systemie IRK:</label><br />
+        <input [(ngModel)]="studentId" name="studentId" type="number" placeholder="3251" required />
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+        <br /><br />
+        <button [disabled]="formIsInvalid" (click)="handleClick()" hotkeys="meta.enter"
+            (hotkey)="handleClick()">Zagraj</button>
+
+
+
+
+
+    </div>

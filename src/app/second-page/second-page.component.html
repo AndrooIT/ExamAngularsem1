@@ -1,68 +1,8 @@
 <div [class]="CSSclass">
     <div class="header">
-        <div>
-            <button (click)="sendLoginPageVisibleToParent()">Exit Game - Zabierz mnie do formularza</button>
-        </div>
-        <div>status gry: <span style="font-size: 1.8rem">{{status}}</span></div>
+        <app-second-page-navbar></app-second-page-navbar>
+        <app-second-page-welcome-msg></app-second-page-welcome-msg>
     </div>
-    <div class="header">
-        <div>
-            <p>Witam Cię <span style="font-size: xx-large;">{{ name }}</span></p>
-        </div>
-        <div>Uzbierane punkty:<br /><span style="font-size: xx-large; display: block; text-align: center;">
-                {{points}}</span></div>
-        <div>Czas rozgrywki: <br />{{timeOfGame}} sekund</div>
-    </div>
-    <div class="header">
-        <div>
-            <div>Panel sterowania grą</div>
-            <div style="text-align: center;">
-                <button (click)="onStartClick()">Start</button>
-                <button (click)="onStopClick()">Stop</button>
-                <button (click)="onRestartClick()">Restart</button>
-            </div>
-            <div>Wciśnij "Start", aby rozpocząć</div>
+    <app-second-page-game></app-second-page-game>
 
-        </div>
-        <div style="display: inline-block;">
-            <div style="display: inline-block;">Panel sterowania wężem</div>
-            <div style="display: inline-block;">
-                <div style="display: inline-block;">
-                    <div style="text-align: center;"><button (click)="game.actionUp()">Góra</button></div><br />
-                    <div style="text-align: center;"><button (click)="game.actionLeft()">Lewo</button>
-                        <button (click)="game.actionDown()">Dół</button>
-                        <button (click)="game.actionRight()">Prawo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header1">
-        <div style="min-width: 299px;"><br />Plansza gry <br />
-            <ngx-snake #game (foodEaten)="onFoodEaten()" (gameOver)="onGameOver()"></ngx-snake>
-        </div>
-        <div><br />Historia gry posortowana wg. kryterium<br />
-            <select [(ngModel)]="sortDirection" name="sortingCriteria" placeholder="kryterium sortowania">
-                <option value="asc">data wpisu od najstarszego</option>
-                <option value="desc">data wpisu od najmłodszego</option>
-            </select>:<br />
-            i filtrowane wg. kryterium <br />
-            <select [(ngModel)]="events" name="filteringCriteria" placeholder="kryterium filtrowania">
-                <option value="">wszystkie wpisy</option>
-                <option value="Start">tylko Starty</option>
-                <option value="Stop">tylko Stopy</option>
-                <option value="Restart">tylko Restarty</option>
-                <option value="Początek Gry">tylko Początek Gry</option>
-            </select>:<br />
-            <div>
-                <ol>
-                    @for (item of list | filterEntrances: events | sortingMachine : sortDirection; track item) {
-                    <li> {{ item.date | date: 'mediumTime' }} - {{item.ev}} - {{item.points}}</li>
-                    } @empty {
-                    <li> There are no items. </li>
-                    }
-                </ol>
-            </div>
-        </div>
-    </div>
 </div>
